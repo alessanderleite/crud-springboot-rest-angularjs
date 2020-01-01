@@ -1,6 +1,9 @@
 package br.com.alessanderleite.dao;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -52,4 +55,24 @@ public class EmployeeDAO {
 		return newEmp;
 	}
 	
+	public Employee updateEmployee(EmployeeForm empForm) {
+		Employee emp = this.getEmployee(empForm.getEmpId());
+		if (emp != null) {
+			emp.setEmpNo(empForm.getEmpNo());
+			emp.setEmpName(empForm.getEmpName());
+			emp.setPosition(empForm.getPosition());
+		}
+		return emp;
+	}
+	
+	public void deleteEmployee(Long empId) {
+		empMap.remove(empId);
+	}
+	
+	public List<Employee> getAllEmployees() {
+		Collection<Employee> c = empMap.values();
+		List<Employee> list = new ArrayList<Employee>();
+		list.addAll(c);
+		return list;
+	}
 }

@@ -28,7 +28,7 @@ public class EmployeeDAO {
 		
 		empMap.put(emp1.getEmpId(), emp1);
 		empMap.put(emp2.getEmpId(), emp2);
-		empMap.put(emp1.getEmpId(), emp3);
+		empMap.put(emp3.getEmpId(), emp3);
 	}
 	
 	public Long getMaxEmpId() {

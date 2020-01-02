@@ -19,7 +19,7 @@ public class MainRESTController {
 	
 	@RequestMapping(value = "/employees",
 			method = RequestMethod.GET,
-			produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+			produces = {MediaType.APPLICATION_JSON_VALUE})
 	public List<Employee> getEmployees() {
 		List<Employee> list = employeeDAO.getAllEmployees();
 		return list;

@@ -1,10 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="EmployeeManagement">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>AngularJS</title>
 </head>
-<body>
-	<h1>Hello World 2020</h1>
+<body ng-controller="EmployeeController">
+	<h3>CRUD: Spring Boot + Rest + AngularJS</h3>
+	<form>
+		<table border="0">
+			<tr>
+				<td>Emp Id</td>
+				<td>{{employeeForm.empId}}</td>
+			</tr>
+			<tr>
+				<td>Emp No</td>
+				<td><input type="text"/></td>
+			</tr>
+			<tr>
+				<td>Emp Name</td>
+				<td><input type="text"/></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="submit" value="Submit" class="blue-button"/>
+				</td>
+			</tr>
+		</table>
+	</form>
+	<br/>
+	<a class="create-button">Create Employee</a>
+	<table border="1">
+		<tr>
+			<td>Emp Id</td>
+			<td>Emp No</td>
+			<td>Emp Name</td>
+			<td>Edit</td>
+			<td>Delete</td>
+		</tr>
+		
+		<tr>
+			<td>{{employee.empId}}</td>
+			<td>{{employee.empNo}}</td>
+			<td>{{employee.empName}}</td>
+			<td>
+				<a class="edit-button">Edit</a>
+			</td>
+			<td>
+				<a class="delete-button">Delete</a>
+			</td>
+		</tr>
+	</table>
 </body>
+<script type="text/javascript" src="webjars/angularjs/1.7.9/angular.min.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+<link type="stylesheet" href="css/app.css">
 </html>

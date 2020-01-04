@@ -13,6 +13,35 @@ app.controller('EmployeeController', function($scope, $http) {
     // Now load the data from server
     _refreshEmployeeData();
     
+    //HTTP POST/PUT methods for add/edit employee
+    //Call: http/localhost:8080/employee
+    $scope.submitEmployee = function() {
+		
+    	var method = '';
+    	var url = '';
+    	
+    	if ($scope.employeeForm.empId == -1) {
+			method = 'POST';
+			url = '/employee';
+		} else {
+			method = 'PUT';
+			url = '/employee';
+		}
+    	
+    	$http({
+    		method: method,
+    		url: url,
+    		data: angular.toJson($scope.employeeForm),
+    		headers: {
+    			'Content-Type': 'application/json'
+    		}
+    	}).then(_success, _error);
+	};
+	
+	$scope.createEmployee = function() {
+		_clearFormData();
+	}
+    
     //HTTP DELETE- delete employee by Id
     //Call: http://localhost:8080/employee/{empId}
     $scope.deleteEmployee = function(employee) {

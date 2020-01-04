@@ -29,4 +29,24 @@ app.controller('EmployeeController', function($scope, $http) {
 	        }
 	    );
 	}
+	
+	function _success(res) {
+		_refreshEmployeeData();
+		_clearFormData();
+	}
+	
+	function _error(res) {
+		var data = res.data;
+		var status = res.status;
+		var header = res.header;
+		var config = res.config;
+		alert("Error: " + status + ": " + data);
+	}
+	
+	//Clear the form
+	function _clearFormData() {
+		$scope.employeeForm.empId = -1;
+		$scope.employeeForm.empNo = '';
+		$scope.employeeForm.empName= ''
+	};
 });

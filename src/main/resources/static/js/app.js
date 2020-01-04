@@ -13,6 +13,15 @@ app.controller('EmployeeController', function($scope, $http) {
     // Now load the data from server
     _refreshEmployeeData();
     
+    //HTTP DELETE- delete employee by Id
+    //Call: http://localhost:8080/employee/{empId}
+    $scope.deleteEmployee = function(employee) {
+		$http({
+			method: 'DELETE',
+			url: '/employee/' + employee.empId
+		}).then(_success, _error);
+	};
+    
     //In case of edit
     $scope.editEmployee = function(employee) {
 		$scope.employeeForm.empId = employee.empId;

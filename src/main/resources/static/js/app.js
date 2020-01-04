@@ -12,6 +12,13 @@ app.controller('EmployeeController', function($scope, $http) {
  
     // Now load the data from server
     _refreshEmployeeData();
+    
+    //In case of edit
+    $scope.editEmployee = function(employee) {
+		$scope.employeeForm.empId = employee.empId;
+		$scope.employeeForm.empNo = employee.empNo;
+		$scope.employeeForm.empName = employee.empName;
+	};
 
     // Private Method  
 	// HTTP GET- get all employees collection

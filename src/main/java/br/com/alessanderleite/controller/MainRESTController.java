@@ -24,9 +24,33 @@ public class MainRESTController {
 	@RequestMapping(value = "/employees",
 			method = RequestMethod.GET,
 			produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
 	public List<Employee> getEmployees() {
 		List<Employee> list = employeeDAO.getAllEmployees();
 		return list;
+	}
+
+	//URL:
+	//http://localhost:8080/employee{empId}
+	@RequestMapping(value = "/employee/{empId}",
+			method = RequestMethod.GET,
+			produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public Employee getEmployee(@PathVariable("empId") Long empId) {
+		return employeeDAO.getEmployee(empId);
+	}
+	
+	//URL:
+	//http://localhost:8080/employee
+	@RequestMapping(value = "/employee",
+			method = RequestMethod.POST,
+			produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public Employee addEmployee(@RequestBody EmployeeForm empForm) {
+		
+		System.out.println("(Service Side) Creating employee with empNo: " + empForm.getEmpNo());
+		
+		return employeeDAO.addEmployee(empForm);
 	}
 	
 	//URL:
